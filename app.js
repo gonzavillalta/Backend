@@ -31,29 +31,6 @@ app.use(session({
   saveUninitialized: true
 }))
 
-// app.get('/', function (req, res) {
-//   var conocido = Boolean(req.session.nombre);
-
-//   res.render('index', {
-//     title: 'Sesiones en Express.js',
-//     conocido: conocido,
-//     nombre: req.session.nombre
-//   });
-// });
-
-// app.post('/ingresar', function(req, res){
-//   console.log(req.body.nombre)
-//   if (req.body.nombre) {
-//   req.session.nombre = req.body.nombre
-//   }
-//   res.redirect('/');
-//   });
-  
-  // app.get('/salir', function (req, res) {
-  // req.session.destroy();
-  // res.redirect('/');
-  // });
-
 secured = async (req, res, next) => {
   try {
     console.log(req.session.id_usuario);
