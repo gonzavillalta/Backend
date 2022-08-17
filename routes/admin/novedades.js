@@ -6,8 +6,8 @@ router.get('/', async function (req, res, next) {
   
   var novedades = await novedadesModel.getNovedades();
 
-  res.render('admin/novedades',{
-    layout:'admin/layout',
+  res.render('Admin/novedades',{
+    layout:'Admin/novedades',
     persona: req.session.nombre,
     novedades
   });

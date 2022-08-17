@@ -10,17 +10,19 @@ router.get('/', function (req, res, next) {
   });
 });
 
-router.post('/admin/login', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   try {
     var usuario = req.body.usuario;
     var password = req.body.password;
+    console.log(req.body)
 
     var data = await usuariosModel.getUserByUsernameAndPassword(usuario, password);
 
     if (data != undefined) {
       req.session.id_usuario = data.id;
       req.session.nombre = data.usuario;
-      res.redirect('admin/novedades');
+      res.redirect('/Admin/novedades');
+                       
     } else {
       res.render('admin/login', {
         layout: 'admin/layout',
