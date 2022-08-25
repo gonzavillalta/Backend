@@ -1,0 +1,22 @@
+<div class="container" style="margin:100px auto">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <h4>Agregar Nueva Novedad</h4>
+            <form action="/admin/novedades" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Nombre" name="nombre">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Apellido" name="apellido">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Edad" name="edad">
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+            {{#if error}}
+        <p>Error en carga de la novedad</p>
+        {{/if}}
+        </div>
+    </div>
+</div>
