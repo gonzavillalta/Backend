@@ -2,21 +2,27 @@
     <div class="row">
         <div class="col-6 offset-3">
             <h4>Agregar Nueva Novedad</h4>
-            <form action="/admin/novedades" method="post">
-                <div class="form-group">
+            <form action="/admin/novedades/agregar" method="post" enctype="multipart/form-data">
+                <div class="mb-3 row">
                     <input type="text" class="form-control" placeholder="Nombre" name="nombre">
                 </div>
-                <div class="form-group">
+                <div class="mb-3 row">
                     <input type="text" class="form-control" placeholder="Apellido" name="apellido">
                 </div>
-                <div class="form-group">
+                <div class="mb-3 row">
                     <input type="text" class="form-control" placeholder="Edad" name="edad">
+                </div>
+                <div class="mb-3 row">
+                    <input type="text" class="form-control" placeholder="Puesto" name="puesto">
+                </div>
+                <div class="mb-3 row">
+                    <label>Imagen: <input type="file" name="imagen" id="imagen" /></label>
                 </div>
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </form>
             {{#if error}}
-        <p>Error en carga de la novedad</p>
-        {{/if}}
+            <p>{{message}}</p>
+            {{/if}}
         </div>
     </div>
 </div>
