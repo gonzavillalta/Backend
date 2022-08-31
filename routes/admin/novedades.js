@@ -15,7 +15,7 @@ if (novedad.img_id) {
   const imagen = cloudinary.image(novedad.img_id, {
     width: 50,
     height: 50,
-    crop: 'pad'
+    crop: 'fill'
 });
 return {
   ...novedad,
@@ -45,8 +45,6 @@ router.get('/agregar', (req, res, next) => {
 router.post('/agregar', async (req, res, next) => {
   try {
     var img_id = '';
-    // console.log(req.files.imagen);
-
     if (req.files && Object.keys(req.files).length > 0) {
       imagen = req.files.imagen;
       img_id = (await uploader(imagen.tempFilePath)).public_id;
@@ -98,14 +96,14 @@ router.post('/modificar', async (req, res, next) => {
   try {
     let img_id = req.body.img_original;
     let borrar_img_vieja = false;
+
     if (req.body.img_delete === "1") {
       img_id = null;
       borrar_img_vieja = true;
     } else {
       if (req.files && Object.keys(req.files).length > 0) {
-        imagen = req.files.imagen;
-        img_id = (await
-        uploader(imagen.tempFilePath)). public_id;
+        imagen = req.files.imagen; 
+        img_id = (await uploader(imagen.tempFilePath)).public_id;
         borrar_img_vieja = true
       }
     }
@@ -113,8 +111,7 @@ router.post('/modificar', async (req, res, next) => {
       await (destroy(req.body.img_original));
     }
 
-
-    let obj = {
+    var obj = {
       nombre: req.body.nombre,
       apellido: req.body.apellido,
       edad: req.body.edad,
